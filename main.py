@@ -13,7 +13,7 @@ import os
 from discord.ext import commands
 from discord_webhook import DiscordWebhook, DiscordEmbed
 from modules.scraper import Scraper
-from modules.disc import Discord
+#from modules.disc import Discord
 
 activity = discord.Game(name = '-help')
 intents = discord.Intents.default()
@@ -26,10 +26,8 @@ start = time.time()
 headers = {"Accept-Language": "en-US,en;q=0.5"}
 
 total = Scraper.products()
-print(total)
-totalProduct = []
-totalProduct.append(*total)
-totalItems = int(totalProduct[0]) #convert the string product to an integer
+totalItems = int(total) #convert the string product to an integer
+print(totalItems)
 
 itemID = []
 itemName = []
@@ -40,7 +38,7 @@ oldPrice = []
 aboutItem = []
 
 queue = queue.Queue()
-new_thread = threading.Thread(target=Scraper.itemDetails(itemName, currentPrice, itemUrl, itemPicture, oldPrice, itemID), args=(queue, ))
+new_thread = threading.Thread(target=Scraper.itemDetails, args=(queue, ))
 new_thread.start()
 new_thread.join()
 itemName, currentPrice, itemUrl, itemPicture, oldPrice, itemID = queue.get()
