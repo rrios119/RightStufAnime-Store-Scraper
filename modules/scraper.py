@@ -6,7 +6,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import logging
-from requests_html import HTMLSession
 import os
 from urllib.parse import urljoin
 import re
@@ -77,7 +76,7 @@ class Scraper:
     
         for page3 in range(0, totalProducts):
     
-            page3 = requests.get(str(itemUrl[page3]))
+            #page3 = requests.get(str(itemUrl[page3]))
 
             soup3 = BeautifulSoup(page3.text, 'html.parser')
 
