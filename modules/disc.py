@@ -2,11 +2,14 @@ import discord
 from discord.ext import commands
 from discord_webhook import DiscordWebhook, DiscordEmbed
 from discord import DiscordWebhook, DiscordEmbed
+from dotenv import load_dotenv
+import os
 
 
 class Discord:
     def send_hook(track):
-        webhook = DiscordWebhook(url = "https://discord.com/api/webhooks/895381957792387132/myY-1_lvU10xP0oJUlJdG3WZY7uczC_F2IpAdAUQNV_ENBD43uiaGma-wZuvgbJDlmsC", username = "RightStufAnime")
+        load_dotenv()
+        webhook = DiscordWebhook(url = os.getenv("WEBHOOK_TOKEN"), username = "RightStufAnime")
         activity = discord.Game(name = '-help')
 
         embed = DiscordEmbed(title='Embed Title', description='Your Embed Description', color='03b2f8')

@@ -9,6 +9,7 @@ from random import randint
 import threading
 import queue as queue
 import discord
+from dotenv import load_dotenv
 import os
 from discord.ext import commands
 from discord_webhook import DiscordWebhook, DiscordEmbed
@@ -82,6 +83,7 @@ print(len(itemUrl))
 print(items.dtypes)
 tracker = []
     
+load_dotenv()    
 bot.run(os.environ.get('DISCORD_TOKEN'))
 
 search = input("Search for your desired Bluray or DVD: ")
